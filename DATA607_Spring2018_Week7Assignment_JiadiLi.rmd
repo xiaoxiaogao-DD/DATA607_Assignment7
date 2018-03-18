@@ -1,0 +1,60 @@
+#MSDS Spring 2018 
+##DATA 607 Data Aquisition and Management
+####Jiadi Li
+####Week 7 Assignment:Working with XML and JSON in R
+
+Create three files which store the books' information in HTML(using an html table), XML, and JSON formats.(Uploaded on Github)
+![](\Users\Asus-pc\Dropbox\Spring 2018\607 Data Acquisition and Management\Assignment\books.png)<br/><br/>
+
+
+Write R code to load the information from each of the three sources into separate R data frames.<br/>  
+
+(0) load packages
+```{r}
+library(rjson)
+library(RCurl)
+library(XML)
+library(stringr)
+library(jsonlite)
+```
+
+(1) HTML  
+```{r}
+#Import HTML file and read HTML table 
+book.html.url <- getURL("https://raw.githubusercontent.com/xiaoxiaogao-DD/DATA607_Assignment7/master/books.html")
+book.html.table <- readHTMLTable(book.html.url,header = TRUE)
+
+#Convert HTML table into a data frame
+book.html.dataframe <- as.data.frame(book.html.table)
+
+#Adjust the column names
+colnames(book.html.dataframe) <- substring(colnames(book.html.dataframe),6,)
+
+book.html.dataframe
+```
+
+(2) JSON  
+```{r}
+#Import JSON file
+book.json.url <- getURL("https://raw.githubusercontent.com/xiaoxiaogao-DD/DATA607_Assignment7/master/books.json")
+
+#Convert data in JSON into a data frame
+book.json.dataframe <- flatten(as.data.frame(fromJSON(book.json.url)))
+
+book.json.dataframe
+
+```
+
+(3) XML  
+```{r}
+#Import XML file 
+book.xml.url <- getURL("https://raw.githubusercontent.com/xiaoxiaogao-DD/DATA607_Assignment7/master/books.xml")
+
+#Convert data in XML into a data frame
+book.xml.dataframe <- xmlToDataFrame(xmlParse(book.xml.url))
+
+book.xml.dataframe
+```
+
+Are the three data frames identical?  
+While the HTML, JSON and XML files have different structures, after manipulation process, the three data frames created are very similar especially for the ones from HTML and XML. For the JSON data frame, serial numbers are created and the data types are signed automatically.
