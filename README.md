@@ -2,4 +2,4 @@
 
 ##DATA 607 Data Aquisition and Management
 
-####Week 7 Assignment:Working with XML and JSON in R
+####Week 7 Assignment: Working with XML and JSON in R
