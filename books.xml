@@ -3,7 +3,7 @@
 	<book>
 		<title>Python for Data Analysis</title>
 		<isbn>978-1-449-31979-3</isbn>
-		<editors>Julie Steele,Meghan Blanchette</editors>
+		<editors>Julie Steele;Meghan Blanchette</editors>
 		<price>39.99</price>
 	</book>
 
@@ -17,7 +17,7 @@
 	<book>
 		<title>R for Data Science</title>
 		<isbn>978-1-491-91039-9</isbn>
-		<editors>Marie Beaugureau,Mike Loukides</editors>
+		<editors>Marie Beaugureau;Mike Loukides</editors>
 		<price>39.99</price>
 	</book>
 </books>
